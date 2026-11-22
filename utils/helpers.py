@@ -1,10 +1,11 @@
-def highest_stock_item(data):
-    if not data:
-        return None
-    return max(data, key=lambda i: i["quantity"])
+from __future__ import annotations
+
+from inventory import Item
 
 
-def lowest_stock_item(data):
-    if not data:
-        return None
-    return min(data, key=lambda i: i["quantity"])
+def highest_stock_item(data: list[Item]) -> Item | None:
+    return max(data, key=lambda i: i.quantity, default=None)
+
+
+def lowest_stock_item(data: list[Item]) -> Item | None:
+    return min(data, key=lambda i: i.quantity, default=None)
